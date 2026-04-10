@@ -171,7 +171,7 @@ export function Projects() {
                   <motion.button
                     onClick={() => openLightbox(i, 0)}
                     whileHover="hover"
-                    className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden cursor-zoom-in mt-2 group/photo"
+                    className="relative w-full h-32 md:h-40 rounded-2xl overflow-hidden cursor-zoom-in mt-2 group/photo"
                   >
                     <motion.img
                       src={project.photos[0]}
@@ -204,7 +204,7 @@ export function Projects() {
                     <motion.button
                       onClick={() => openLightbox(i, 0)}
                       whileHover="hover"
-                      className="col-span-2 relative h-48 md:h-60 rounded-2xl overflow-hidden cursor-zoom-in group/photo"
+                      className="col-span-2 relative h-32 md:h-40 rounded-2xl overflow-hidden cursor-zoom-in group/photo"
                     >
                       <motion.img
                         src={project.photos[0]}
