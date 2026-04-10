@@ -3,10 +3,10 @@ import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
 
 const stats = [
-  { value: "4.40", label: "GPA / 5.00" },
   { value: "260+", label: "Volunteer Hours" },
   { value: "4", label: "Certifications" },
   { value: "2", label: "Projects Shipped" },
+  { value: "1st", label: "Hackathon Place" },
 ];
 
 export function Hero() {

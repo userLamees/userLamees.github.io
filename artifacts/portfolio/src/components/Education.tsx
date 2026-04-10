@@ -7,7 +7,7 @@ const items = [
     degree: "Bachelor of Computer Information Systems",
     institution: "Imam Mohammad Ibn Saud Islamic University",
     period: "2022 – 2026",
-    badge: "GPA 4.40 / 5.00",
+    badge: "In Progress",
     detail: "Graduation Project: Jasmine — AI-powered iOS app for skin condition assessment using image recognition and personalized care recommendations.",
   },
   {
