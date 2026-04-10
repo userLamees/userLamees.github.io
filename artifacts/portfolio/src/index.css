@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&family=Cairo:wght@300;400;500;600;700;900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -314,5 +314,27 @@
     height: 1px;
     background: hsl(var(--primary));
     display: inline-block;
+  }
+
+  /* Arabic / RTL overrides */
+  [dir="rtl"] body,
+  [dir="rtl"] * {
+    font-family: 'Cairo', sans-serif !important;
+    letter-spacing: 0 !important;
+  }
+
+  [dir="rtl"] .font-serif {
+    font-weight: 700;
+    font-style: normal !important;
+  }
+
+  [dir="rtl"] .italic {
+    font-style: normal !important;
+    font-weight: 700;
+  }
+
+  [dir="rtl"] .tracking-widest,
+  [dir="rtl"] .tracking-wider {
+    letter-spacing: 0 !important;
   }
 }

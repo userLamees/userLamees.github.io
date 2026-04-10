@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Navigation() {
+  const { t, lang, toggle } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+
+  const navItems = [
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.projects, href: "#projects" },
+    { name: t.nav.skills, href: "#skills" },
+    { name: t.nav.experience, href: "#experience" },
+    { name: t.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,14 +62,14 @@ export function Navigation() {
               const isActive = activeSection === item.href.replace("#", "");
               return (
                 <a
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
                   className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     isActive
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
-                  data-testid={`nav-link-${item.name.toLowerCase()}`}
+                  data-testid={`nav-link-${item.href.replace("#", "")}`}
                 >
                   {isActive && (
                     <motion.span
@@ -83,24 +85,43 @@ export function Navigation() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
+            {/* Language toggle */}
+            <button
+              onClick={toggle}
+              aria-label="Toggle language"
+              data-testid="lang-toggle"
+              className="px-4 py-2 text-sm font-medium rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-300"
+            >
+              {lang === "en" ? "عربي" : "EN"}
+            </button>
+
             <a
               href="mailto:Lamees1harbi@gmail.com"
               className="px-5 py-2 text-sm font-medium bg-foreground text-background rounded-full hover:bg-primary transition-colors duration-300 shadow-sm"
               data-testid="nav-cta"
             >
-              Get in touch
+              {t.nav.cta}
             </a>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden p-2 -mr-2 text-foreground rounded-lg hover:bg-secondary transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-            data-testid="nav-mobile-toggle"
-          >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggle}
+              aria-label="Toggle language"
+              className="px-3 py-1.5 text-xs font-medium rounded-full border border-border text-muted-foreground hover:text-foreground transition-all"
+            >
+              {lang === "en" ? "عربي" : "EN"}
+            </button>
+            <button
+              className="p-2 -mr-2 text-foreground rounded-lg hover:bg-secondary transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+              data-testid="nav-mobile-toggle"
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </motion.header>
 
@@ -117,9 +138,9 @@ export function Navigation() {
             <nav className="flex flex-col gap-2 flex-1 justify-center">
               {navItems.map((item, i) => (
                 <motion.a
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: lang === "ar" ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.07 }}
                   className="flex items-center justify-between py-4 text-3xl font-serif text-foreground border-b border-border/50 hover:text-primary transition-colors"
@@ -135,7 +156,7 @@ export function Navigation() {
               className="mt-8 py-4 text-center text-sm font-medium bg-foreground text-background rounded-full"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Get in touch
+              {t.nav.cta}
             </a>
           </motion.div>
         )}
