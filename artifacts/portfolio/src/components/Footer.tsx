@@ -1,7 +1,4 @@
-import { useLanguage } from "@/contexts/LanguageContext";
-
 export function Footer() {
-  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -12,11 +9,11 @@ export function Footer() {
         </a>
 
         <p className="text-xs font-mono text-muted-foreground text-center">
-          &copy; {currentYear} Lamis Alharbi &mdash; {t.footer.tagline}
+          &copy; {currentYear} Lamis Alharbi &mdash; Designed with precision.
         </p>
 
         <p className="text-xs font-mono text-muted-foreground">
-          {t.footer.location}
+          Riyadh, Saudi Arabia
         </p>
       </div>
     </footer>

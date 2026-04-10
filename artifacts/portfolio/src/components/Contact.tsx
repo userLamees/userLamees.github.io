@@ -1,39 +1,35 @@
 import { FadeIn } from "./FadeIn";
 import { Mail, ArrowRight, Linkedin, Github, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
-import { useLanguage } from "@/contexts/LanguageContext";
+
+const links = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "Lamees1harbi@gmail.com",
+    href: "mailto:Lamees1harbi@gmail.com",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "@LamisAlharbi",
+    href: "https://linkedin.com",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "GitHub Profile",
+    href: "https://github.com",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Riyadh, Saudi Arabia",
+    href: null,
+  },
+];
 
 export function Contact() {
-  const { t } = useLanguage();
-  const c = t.contact;
-
-  const links = [
-    {
-      icon: Mail,
-      label: c.emailLabel,
-      value: "Lamees1harbi@gmail.com",
-      href: "mailto:Lamees1harbi@gmail.com",
-    },
-    {
-      icon: Linkedin,
-      label: c.linkedinLabel,
-      value: "@LamisAlharbi",
-      href: "https://linkedin.com",
-    },
-    {
-      icon: Github,
-      label: c.githubLabel,
-      value: "GitHub Profile",
-      href: "https://github.com",
-    },
-    {
-      icon: MapPin,
-      label: c.locationLabel,
-      value: t.about.locationValue,
-      href: null,
-    },
-  ];
-
   return (
     <section id="contact" className="py-32 px-6 md:px-12 lg:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
@@ -41,7 +37,7 @@ export function Contact() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
             <span className="section-line" />
-            <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">{c.label}</span>
+            <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Contact</span>
           </div>
         </FadeIn>
 
@@ -51,13 +47,13 @@ export function Contact() {
           <div className="lg:col-span-6">
             <FadeIn>
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-foreground mb-8">
-                {c.heading1}<br />
-                <span className="italic text-primary">{c.heading2}</span>
+                Let's build something<br />
+                <span className="italic text-primary">meaningful.</span>
               </h2>
             </FadeIn>
             <FadeIn delay={0.1}>
               <p className="text-lg text-muted-foreground font-light leading-relaxed mb-12 max-w-md">
-                {c.subtext}
+                Open to internship opportunities, collaborations, and conversations about design, technology, and everything in between.
               </p>
             </FadeIn>
             <FadeIn delay={0.2}>
@@ -68,7 +64,7 @@ export function Contact() {
                 className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background text-sm font-semibold hover:bg-primary transition-colors duration-300 shadow-lg"
                 data-testid="contact-email-btn"
               >
-                {c.cta}
+                Say Hello
                 <ArrowRight className="w-4 h-4" />
               </motion.a>
             </FadeIn>
@@ -86,7 +82,7 @@ export function Contact() {
                         target={link.href.startsWith("mailto") ? undefined : "_blank"}
                         rel="noopener noreferrer"
                         className="group flex items-center justify-between p-5 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-sm transition-all duration-300"
-                        data-testid={`contact-link-${i}`}
+                        data-testid={`contact-link-${link.label.toLowerCase()}`}
                       >
                         <div className="flex items-center gap-4">
                           <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center group-hover:bg-primary/10 transition-colors">

@@ -3,46 +3,61 @@ import { FadeIn } from "./FadeIn";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles, Trophy, MapPin } from "lucide-react";
 import { Lightbox } from "./Lightbox";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 import jasminePoster from "@assets/poster_jamsine_1775783984115.png";
 import icanPhoto1 from "@assets/ca908562-f427-4d37-ab7f-abd98895e4ae_1775784122191.jpeg";
 import icanPhoto2 from "@assets/FullSizeRender_1775784122191.jpeg";
 import naadekWin from "@assets/1753316461820_1775784843373.jpeg";
 
-const projectStatic = [
+const projects = [
   {
     index: "01",
+    title: "Jasmine",
+    type: "Graduation Project",
+    date: "Dec 2025",
+    role: "iOS Developer · ML Engineer",
+    description: "An AI-powered iOS application for skin condition assessment. Users photograph their skin and receive personalized care recommendations powered by image recognition — bridging healthcare and technology for everyday users.",
+    highlight: "Only team from our batch selected to present at ICAN 2026.",
+    technologies: ["SwiftUI", "Core ML", "Vision", "iOS"],
     accent: "from-rose-50 to-orange-50",
     icon: Sparkles,
     photos: [jasminePoster, icanPhoto1, icanPhoto2],
+    photoLabels: ["Project Poster", "ICAN 2026", "Jasmine Demo"],
   },
   {
     index: "02",
+    title: "Naadek",
+    type: "Hackathon — 1st Place",
+    date: "Apr 2025",
+    role: "Project Manager",
+    description: "First place at the University Solutions Hackathon. A student engagement platform integrating club discovery and task management — built around UI/UX best practices to meaningfully enhance campus connectivity.",
+    highlight: null,
+    technologies: ["UI/UX Design", "Figma", "System Design", "Prototyping"],
     accent: "from-amber-50 to-yellow-50",
     icon: Trophy,
     photos: [naadekWin],
+    photoLabels: ["1st Place — University Solutions Hackathon"],
   },
   {
     index: "03",
+    title: "Haik | حيك",
+    type: "Academic Project",
+    date: "2025",
+    role: "Project Manager",
+    description: "An app designed to help users relocate by exploring neighborhoods individually, viewing available services and amenities, and comparing neighborhood ratings. Uses a recommendation system to suggest the most suitable neighborhoods based on work location, schools, and personal needs.",
+    highlight: null,
+    technologies: ["UI/UX Design", "Figma", "Recommendation Systems", "Project Management"],
     accent: "from-teal-50 to-emerald-50",
     icon: MapPin,
     photos: [],
+    photoLabels: [],
   },
 ];
 
 interface LightboxState { projectIndex: number; photoIndex: number }
 
 export function Projects() {
-  const { t } = useLanguage();
-  const p = t.projects;
-
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
-
-  const projects = projectStatic.map((s, i) => ({
-    ...s,
-    ...p.items[i],
-  }));
 
   const closeLightbox = () => setLightbox(null);
   const prevPhoto = () => {
@@ -65,16 +80,16 @@ export function Projects() {
           <FadeIn>
             <div className="flex items-center gap-4 mb-6">
               <span className="section-line" />
-              <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">{p.label}</span>
+              <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Selected Works</span>
             </div>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-foreground">
-              {p.heading1}<br />
-              <span className="italic text-primary">{p.heading2}</span>
+              What I've<br />
+              <span className="italic text-primary">built.</span>
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
             <p className="text-muted-foreground font-light max-w-xs md:text-right leading-relaxed">
-              {p.subtext}
+              Projects that live at the intersection of design, technology, and human need.
             </p>
           </FadeIn>
         </div>
@@ -89,7 +104,7 @@ export function Projects() {
               <FadeIn key={project.index} delay={i * 0.1}>
                 <div
                   className={`group relative rounded-3xl border border-border bg-gradient-to-br ${project.accent} hover:border-primary/30 hover:shadow-lg transition-all duration-500 overflow-hidden`}
-                  data-testid={`project-card-${project.index}`}
+                  data-testid={`project-card-${project.title.toLowerCase().replace(/\s.*/, "")}`}
                 >
                   {/* Ghost index */}
                   <div className="absolute top-6 right-6 font-mono text-6xl font-bold text-foreground/[0.04] select-none leading-none z-0 pointer-events-none">
@@ -252,7 +267,7 @@ export function Projects() {
                   transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
                   className="w-2 h-2 rounded-full bg-muted-foreground/30 mx-auto mb-3"
                 />
-                <p className="text-sm font-mono text-muted-foreground tracking-wide">{p.comingSoon}</p>
+                <p className="text-sm font-mono text-muted-foreground tracking-wide">More works brewing...</p>
               </div>
             </div>
           </FadeIn>

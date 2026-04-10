@@ -1,10 +1,15 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
+
+const stats = [
+  { value: "260+", label: "Volunteer Hours" },
+  { value: "4", label: "Certifications" },
+  { value: "2", label: "Projects Shipped" },
+  { value: "1st", label: "Hackathon Place" },
+];
 
 export function Hero() {
-  const { t } = useLanguage();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
@@ -47,11 +52,11 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/80 backdrop-blur-sm text-sm font-mono text-muted-foreground shadow-sm"
               data-testid="hero-badge"
             >
-              <span className="relative flex h-2 w-2 flex-shrink-0">
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
-              {t.hero.badge}
+              Available for internship — Riyadh, Saudi Arabia
             </span>
           </motion.div>
 
@@ -79,7 +84,7 @@ export function Hero() {
             </motion.h1>
           </div>
 
-          {/* Subtitle tags */}
+          {/* Subtitle row */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -104,7 +109,8 @@ export function Hero() {
             className="text-lg text-muted-foreground font-light max-w-xl leading-relaxed mb-16"
             data-testid="hero-summary"
           >
-            {t.hero.tagline}
+            Bridging beautiful interfaces with intelligent technology.
+            Building AI-powered mobile experiences, one pixel at a time.
           </motion.p>
 
           {/* Stats row */}
@@ -114,7 +120,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden border border-border shadow-sm"
           >
-            {t.hero.stats.map((stat) => (
+            {stats.map((stat) => (
               <div
                 key={stat.label}
                 className="bg-card/80 backdrop-blur-sm px-6 py-5 flex flex-col gap-1"
@@ -140,7 +146,7 @@ export function Hero() {
           data-testid="hero-scroll-btn"
           className="group flex flex-col items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
-          <span className="text-xs font-mono tracking-widest uppercase">{t.hero.scroll}</span>
+          <span className="text-xs font-mono tracking-widest uppercase">Scroll</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
