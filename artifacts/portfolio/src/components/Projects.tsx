@@ -166,35 +166,91 @@ export function Projects() {
                   </div>
                 </div>
 
-                {/* Photo strip */}
-                {project.photos.length > 0 && (
-                  <div className="border-t border-border/40 pt-5">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Camera className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={1.5} />
-                      <span className="text-xs font-mono text-muted-foreground tracking-wide">Photos</span>
+                {/* Photo section */}
+                {project.photos.length === 1 && (
+                  <motion.button
+                    onClick={() => openLightbox(i, 0)}
+                    whileHover="hover"
+                    className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden cursor-zoom-in mt-2 group/photo"
+                  >
+                    <motion.img
+                      src={project.photos[0]}
+                      alt={project.photoLabels[0]}
+                      className="w-full h-full object-cover"
+                      variants={{ hover: { scale: 1.04 } }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                    {/* Label badge */}
+                    <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                      <span className="px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-xs font-mono tracking-wide">
+                        {project.photoLabels[0]}
+                      </span>
                     </div>
-                    <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
-                      {project.photos.map((photo, pi) => (
+                    {/* Zoom hint */}
+                    <div className="absolute top-4 right-4 opacity-0 group-hover/photo:opacity-100 transition-opacity duration-300">
+                      <div className="px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white text-[10px] font-mono tracking-wide flex items-center gap-1.5">
+                        <Camera className="w-3 h-3" />
+                        View
+                      </div>
+                    </div>
+                  </motion.button>
+                )}
+
+                {project.photos.length > 1 && (
+                  <div className="grid grid-cols-3 gap-2 mt-2">
+                    {/* Featured first photo */}
+                    <motion.button
+                      onClick={() => openLightbox(i, 0)}
+                      whileHover="hover"
+                      className="col-span-2 relative h-48 md:h-60 rounded-2xl overflow-hidden cursor-zoom-in group/photo"
+                    >
+                      <motion.img
+                        src={project.photos[0]}
+                        alt={project.photoLabels[0]}
+                        className="w-full h-full object-cover"
+                        variants={{ hover: { scale: 1.05 } }}
+                        transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
+                      <div className="absolute bottom-3 left-3">
+                        <span className="px-2.5 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[10px] font-mono tracking-wide">
+                          {project.photoLabels[0]}
+                        </span>
+                      </div>
+                      <div className="absolute top-3 right-3 opacity-0 group-hover/photo:opacity-100 transition-opacity duration-300">
+                        <div className="px-2 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white text-[10px] font-mono flex items-center gap-1">
+                          <Camera className="w-2.5 h-2.5" />
+                          View
+                        </div>
+                      </div>
+                    </motion.button>
+
+                    {/* Side thumbnails */}
+                    <div className="col-span-1 flex flex-col gap-2">
+                      {project.photos.slice(1).map((photo, pi) => (
                         <motion.button
                           key={pi}
-                          whileHover={{ scale: 1.03 }}
-                          whileTap={{ scale: 0.97 }}
-                          onClick={() => openLightbox(i, pi)}
-                          className="flex-shrink-0 relative w-36 h-24 md:w-48 md:h-32 rounded-xl overflow-hidden border border-border/60 hover:border-primary/40 hover:shadow-md transition-all duration-300 cursor-zoom-in"
+                          onClick={() => openLightbox(i, pi + 1)}
+                          whileHover="hover"
+                          className="relative flex-1 rounded-xl overflow-hidden cursor-zoom-in group/thumb"
                         >
-                          <img
+                          <motion.img
                             src={photo}
-                            alt={project.photoLabels[pi]}
+                            alt={project.photoLabels[pi + 1]}
                             className="w-full h-full object-cover"
+                            variants={{ hover: { scale: 1.06 } }}
+                            transition={{ duration: 0.4 }}
                           />
-                          <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors" />
-                          <div className="absolute bottom-0 left-0 right-0 px-2 py-1 bg-gradient-to-t from-black/50 to-transparent">
-                            <p className="text-white text-[10px] font-mono leading-tight truncate">
-                              {project.photoLabels[pi]}
-                            </p>
-                          </div>
+                          <div className="absolute inset-0 bg-black/0 group-hover/thumb:bg-black/20 transition-colors duration-300" />
                         </motion.button>
                       ))}
+                      {project.photos.length > 1 && (
+                        <p className="text-[10px] font-mono text-muted-foreground text-center pt-0.5">
+                          +{project.photos.length - 1} more
+                        </p>
+                      )}
                     </div>
                   </div>
                 )}
