@@ -1,42 +1,67 @@
 import { FadeIn } from "./FadeIn";
-import { SectionHeading } from "./SectionHeading";
 
 export function About() {
   return (
-    <section id="about" className="py-24 px-6 md:px-12 lg:px-24 bg-secondary/50">
-      <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
-          <div className="md:col-span-5">
-            <SectionHeading 
-              title="About Me." 
-              subtitle="Driven by curiosity, grounded in detail."
-            />
+    <section id="about" className="py-32 px-6 md:px-12 lg:px-24">
+      <div className="max-w-6xl mx-auto">
+
+        {/* Label */}
+        <FadeIn>
+          <div className="flex items-center gap-4 mb-16">
+            <span className="section-line" />
+            <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">About</span>
           </div>
-          
-          <div className="md:col-span-7 space-y-8">
-            <FadeIn delay={0.2}>
-              <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
-                As a Computer Information Systems student, I'm fascinated by the intersection of human psychology and technology. I don't just write code; I design experiences that feel intuitive, elegant, and purposeful.
-              </p>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+          {/* Left — headline */}
+          <div className="lg:col-span-5">
+            <FadeIn direction="up">
+              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-foreground">
+                Driven by curiosity,<br />
+                <span className="italic text-primary">grounded in detail.</span>
+              </h2>
             </FadeIn>
-            
-            <FadeIn delay={0.3}>
-              <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
-                My approach is rooted in precision. Whether I'm crafting a complex SwiftUI interface or architecting a user flow in Figma, I believe that the smallest details often make the biggest impact. I am eager to apply my technical skills to deliver high-impact results that matter.
+          </div>
+
+          {/* Right — copy + meta */}
+          <div className="lg:col-span-7 space-y-8">
+            <FadeIn delay={0.15}>
+              <p className="text-xl text-muted-foreground font-light leading-[1.8]">
+                As a Computer Information Systems student, I'm fascinated by the intersection of human psychology and technology. I don't just write code — I design experiences that feel intuitive, elegant, and purposeful.
               </p>
             </FadeIn>
 
-            <div className="grid grid-cols-2 gap-8 pt-8 border-t border-border">
-              <FadeIn delay={0.4}>
-                <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-2">Location</h4>
-                <p className="text-muted-foreground">Riyadh, Saudi Arabia</p>
-              </FadeIn>
-              
-              <FadeIn delay={0.5}>
-                <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-2">Languages</h4>
-                <p className="text-muted-foreground">Arabic (Native)<br />English (Professional)</p>
-              </FadeIn>
-            </div>
+            <FadeIn delay={0.25}>
+              <p className="text-lg text-muted-foreground font-light leading-[1.8]">
+                My approach is rooted in precision. Whether crafting a complex SwiftUI interface or architecting a user flow in Figma, I believe the smallest details make the biggest impact. I'm eager to apply my technical skills to deliver results that matter.
+              </p>
+            </FadeIn>
+
+            {/* Meta grid */}
+            <FadeIn delay={0.35}>
+              <div className="grid grid-cols-2 gap-6 pt-8 border-t border-border">
+                <div>
+                  <p className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-2">Location</p>
+                  <p className="text-foreground font-medium">Riyadh, Saudi Arabia</p>
+                </div>
+                <div>
+                  <p className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-2">Languages</p>
+                  <p className="text-foreground font-medium">Arabic · English</p>
+                </div>
+                <div>
+                  <p className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-2">Specialization</p>
+                  <p className="text-foreground font-medium">iOS · UI/UX · AI</p>
+                </div>
+                <div>
+                  <p className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-2">Status</p>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-primary inline-block" />
+                    <p className="text-foreground font-medium">Open to opportunities</p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </div>
