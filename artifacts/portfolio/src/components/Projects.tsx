@@ -7,6 +7,7 @@ import { Lightbox } from "./Lightbox";
 import jasminePoster from "@assets/poster_jamsine_1775783984115.png";
 import icanPhoto1 from "@assets/ca908562-f427-4d37-ab7f-abd98895e4ae_1775784122191.jpeg";
 import icanPhoto2 from "@assets/FullSizeRender_1775784122191.jpeg";
+import naadekWin from "@assets/1753316461820_1775784843373.jpeg";
 
 const projects = [
   {
@@ -36,8 +37,8 @@ const projects = [
     accent: "from-amber-50 to-yellow-50",
     icon: Trophy,
     link: "#",
-    photos: [],
-    photoLabels: [],
+    photos: [naadekWin],
+    photoLabels: ["1st Place — University Solutions Hackathon"],
   },
   {
     index: "03",
