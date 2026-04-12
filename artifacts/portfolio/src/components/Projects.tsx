@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { FadeIn } from "./FadeIn";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Sparkles, Trophy, MapPin } from "lucide-react";
+import { ArrowUpRight, Sparkles, Trophy } from "lucide-react";
 import { Lightbox } from "./Lightbox";
 
 import jasminePoster from "@assets/poster_jamsine_1775783984115.png";
 import icanPhoto1 from "@assets/ca908562-f427-4d37-ab7f-abd98895e4ae_1775784122191.jpeg";
 import icanPhoto2 from "@assets/FullSizeRender_1775784122191.jpeg";
 import naadekWin from "@assets/1753316461820_1775784843373.jpeg";
+import haikLogo from "@/assets/haik-logo.png";
 
 const projects = [
   {
@@ -16,13 +17,15 @@ const projects = [
     type: "Graduation Project",
     date: "Dec 2025",
     role: "iOS Developer · ML Engineer",
-    description: "An AI-powered iOS application for skin condition assessment. Users photograph their skin and receive personalized care recommendations powered by image recognition — bridging healthcare and technology for everyday users.",
+    description: "An AI-powered iOS app for skin condition assessment. Snap a photo, get personalized skincare recommendations — where healthcare meets everyday tech.",
     highlight: "Only team from our batch selected to present at ICAN 2026.",
     technologies: ["SwiftUI", "Core ML", "Vision", "iOS"],
     accent: "from-rose-50 to-orange-50",
     icon: Sparkles,
+    logo: null as string | null,
     photos: [jasminePoster, icanPhoto1, icanPhoto2],
     photoLabels: ["Project Poster", "ICAN 2026", "Jasmine Demo"],
+    appStoreUrl: null as string | null,
   },
   {
     index: "02",
@@ -30,27 +33,31 @@ const projects = [
     type: "Hackathon — 1st Place",
     date: "Apr 2025",
     role: "Project Manager",
-    description: "First place at the University Solutions Hackathon. A student engagement platform integrating club discovery and task management — built around UI/UX best practices to meaningfully enhance campus connectivity.",
+    description: "1st place at the University Solutions Hackathon. A campus platform where students discover clubs, manage tasks, and actually stay connected.",
     highlight: null,
     technologies: ["UI/UX Design", "Figma", "System Design", "Prototyping"],
     accent: "from-amber-50 to-yellow-50",
     icon: Trophy,
+    logo: null as string | null,
     photos: [naadekWin],
     photoLabels: ["1st Place — University Solutions Hackathon"],
+    appStoreUrl: null as string | null,
   },
   {
     index: "03",
     title: "Haik | حيك",
-    type: "Academic Project",
+    type: "Live on App Store",
     date: "2025",
     role: "Project Manager",
-    description: "An app designed to help users relocate by exploring neighborhoods individually, viewing available services and amenities, and comparing neighborhood ratings. Uses a recommendation system to suggest the most suitable neighborhoods based on work location, schools, and personal needs.",
+    description: "Moving to a new neighborhood? Haik helps you explore areas, compare what's nearby, and find the spot that actually fits your life.",
     highlight: null,
     technologies: ["UI/UX Design", "Figma", "Recommendation Systems", "Project Management"],
     accent: "from-teal-50 to-emerald-50",
-    icon: MapPin,
+    icon: null,
+    logo: haikLogo,
     photos: [],
     photoLabels: [],
+    appStoreUrl: "https://apps.apple.com/sa/app/haik-%D8%AD%D9%8A-%D9%83/id6759011646",
   },
 ];
 
@@ -119,7 +126,10 @@ export function Projects() {
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex items-center gap-4">
                             <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/80 border border-border/60 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
-                              <project.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                              {project.logo
+                                ? <img src={project.logo} alt={project.title} className="w-8 h-8 object-contain" />
+                                : project.icon && <project.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                              }
                             </div>
                             <div>
                               <div className="flex flex-wrap items-center gap-2">
@@ -130,9 +140,20 @@ export function Projects() {
                               <p className="text-xs font-mono text-muted-foreground/70 mt-0.5">{project.role}</p>
                             </div>
                           </div>
-                          <div className="flex-shrink-0 w-9 h-9 rounded-full bg-white/80 border border-border/60 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground transition-all duration-300 shadow-sm">
-                            <ArrowUpRight className="w-4 h-4" />
-                          </div>
+                          {project.appStoreUrl ? (
+                            <a
+                              href={project.appStoreUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-shrink-0 w-9 h-9 rounded-full bg-white/80 border border-border/60 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all duration-300 shadow-sm"
+                            >
+                              <ArrowUpRight className="w-4 h-4" />
+                            </a>
+                          ) : (
+                            <div className="flex-shrink-0 w-9 h-9 rounded-full bg-white/80 border border-border/60 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground transition-all duration-300 shadow-sm">
+                              <ArrowUpRight className="w-4 h-4" />
+                            </div>
+                          )}
                         </div>
 
                         <div>
@@ -187,7 +208,10 @@ export function Projects() {
                     <div className="p-8 md:p-10 flex flex-col gap-6 relative z-10">
                       <div className="flex flex-col md:flex-row md:items-start gap-6">
                         <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white/80 border border-border/60 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
-                          <project.icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                          {project.logo
+                            ? <img src={project.logo} alt={project.title} className="w-10 h-10 object-contain" />
+                            : project.icon && <project.icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                          }
                         </div>
 
                         <div className="flex-1 min-w-0">
@@ -220,9 +244,21 @@ export function Projects() {
                         </div>
 
                         <div className="flex-shrink-0 self-start">
-                          <div className="w-10 h-10 rounded-full bg-white/80 border border-border/60 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300 shadow-sm">
-                            <ArrowUpRight className="w-4 h-4" />
-                          </div>
+                          {project.appStoreUrl ? (
+                            <a
+                              href={project.appStoreUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-xs font-semibold hover:bg-primary transition-colors duration-300 shadow-sm whitespace-nowrap"
+                            >
+                              App Store
+                              <ArrowUpRight className="w-3.5 h-3.5" />
+                            </a>
+                          ) : (
+                            <div className="w-10 h-10 rounded-full bg-white/80 border border-border/60 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300 shadow-sm">
+                              <ArrowUpRight className="w-4 h-4" />
+                            </div>
+                          )}
                         </div>
                       </div>
 

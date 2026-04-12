@@ -1,13 +1,46 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const stats = [
-  { value: "260+", label: "Volunteer Hours" },
-  { value: "4", label: "Certifications" },
-  { value: "2", label: "Projects Shipped" },
-  { value: "1st", label: "Hackathon Place" },
+  { to: 260, suffix: "+", label: "Volunteer Hours" },
+  { to: 4,   suffix: "",  label: "Certifications" },
+  { to: 3,   suffix: "",  label: "Projects Shipped" },
+  { text: "1st",          label: "Hackathon Place" },
 ];
+
+function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [value, setValue] = useState(0);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setStarted(true); },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    let startTime: number;
+    const duration = 1600;
+    const tick = (ts: number) => {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(eased * to));
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [started, to]);
+
+  return <span ref={ref}>{value}{suffix}</span>;
+}
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -106,7 +139,12 @@ export function Hero() {
                 key={stat.label}
                 className="bg-card/80 backdrop-blur-sm px-6 py-5 flex flex-col gap-1"
               >
-                <span className="font-serif text-2xl md:text-3xl font-normal text-foreground">{stat.value}</span>
+                <span className="font-serif text-2xl md:text-3xl font-normal text-foreground">
+                  {"text" in stat
+                    ? stat.text
+                    : <CountUp to={stat.to} suffix={stat.suffix} />
+                  }
+                </span>
                 <span className="text-xs font-mono text-muted-foreground tracking-wide uppercase">{stat.label}</span>
               </div>
             ))}
