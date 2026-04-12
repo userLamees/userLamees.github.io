@@ -18,8 +18,8 @@ export function About() {
           <div className="lg:col-span-5">
             <FadeIn direction="up">
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-foreground">
-                Building things people<br />
-                <span className="italic text-primary">love to use.</span>
+                Designing with purpose,<br />
+                <span className="italic text-primary">building with precision.</span>
               </h2>
             </FadeIn>
           </div>
@@ -28,13 +28,13 @@ export function About() {
           <div className="lg:col-span-7 space-y-8">
             <FadeIn delay={0.15}>
               <p className="text-xl text-muted-foreground font-light leading-[1.8]">
-                I'm Lamis — a CIS student who got hooked on one simple question: why do some apps feel effortless while others feel like a chore? That curiosity led me to design and iOS development, and I haven't looked back since.
+                I'm a Computer Information Systems student specializing in UI/UX design, iOS development, and data analysis. I create digital experiences that are intuitive, visually refined, and purposeful — from initial concept through to a working product.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.25}>
               <p className="text-lg text-muted-foreground font-light leading-[1.8]">
-                I care about the details — the tap that feels satisfying, the layout that just makes sense, the flow you never have to think about. Whether I'm in Figma or writing SwiftUI, I'm always asking: does this actually feel good? I want to bring that mindset into a team that cares about the same things.
+                My work spans interface design in Figma, mobile development with SwiftUI, and data-driven problem solving. I bring both a designer's eye and a developer's mindset to every project, with a strong focus on quality, usability, and attention to detail.
               </p>
             </FadeIn>
 
