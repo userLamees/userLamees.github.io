@@ -34,7 +34,7 @@ export function About() {
 
             <FadeIn delay={0.25}>
               <p className="text-lg text-muted-foreground font-light leading-[1.8]">
-                Whether I'm designing interfaces in Figma, building mobile apps with SwiftUI, or analyzing datasets to uncover insights — I bring the same mindset to all of it: curiosity, attention to detail, and a commitment to doing the work well.
+                Whether I'm designing interfaces in Figma, building mobile apps with SwiftUI, or analyzing datasets to uncover insights — I bring the same mindset to all of it: curiosity, attention to detail, and a commitment to doing the work well. Outside of tech, volunteering is a big part of who I am — I've logged over 260 hours giving back to my community, and it's shaped how I think about building things that genuinely serve people.
               </p>
             </FadeIn>
 
