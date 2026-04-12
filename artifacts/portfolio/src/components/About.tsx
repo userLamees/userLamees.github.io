@@ -28,13 +28,13 @@ export function About() {
           <div className="lg:col-span-7 space-y-8">
             <FadeIn delay={0.15}>
               <p className="text-xl text-muted-foreground font-light leading-[1.8]">
-                I'm a Computer Information Systems student specializing in UI/UX design, iOS development, and data analysis. I create digital experiences that are intuitive, visually refined, and purposeful — from initial concept through to a working product.
+                I'm a Computer Information Systems student with a focus on two areas I'm equally passionate about: UI/UX design and iOS development on one side, and data analysis on the other. I enjoy both building products people use and making sense of data to drive better decisions.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.25}>
               <p className="text-lg text-muted-foreground font-light leading-[1.8]">
-                My work spans interface design in Figma, mobile development with SwiftUI, and data-driven problem solving. I bring both a designer's eye and a developer's mindset to every project, with a strong focus on quality, usability, and attention to detail.
+                Whether I'm designing interfaces in Figma, building mobile apps with SwiftUI, or analyzing datasets to uncover insights — I bring the same mindset to all of it: curiosity, attention to detail, and a commitment to doing the work well.
               </p>
             </FadeIn>
 
