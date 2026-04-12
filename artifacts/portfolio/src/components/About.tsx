@@ -18,8 +18,8 @@ export function About() {
           <div className="lg:col-span-5">
             <FadeIn direction="up">
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-foreground">
-                Driven by curiosity,<br />
-                <span className="italic text-primary">grounded in detail.</span>
+                Building things people<br />
+                <span className="italic text-primary">love to use.</span>
               </h2>
             </FadeIn>
           </div>
@@ -28,13 +28,13 @@ export function About() {
           <div className="lg:col-span-7 space-y-8">
             <FadeIn delay={0.15}>
               <p className="text-xl text-muted-foreground font-light leading-[1.8]">
-                As a Computer Information Systems student, I'm fascinated by the intersection of human psychology and technology. I don't just write code — I design experiences that feel intuitive, elegant, and purposeful.
+                I'm Lamis — a CIS student who got hooked on one simple question: why do some apps feel effortless while others feel like a chore? That curiosity led me to design and iOS development, and I haven't looked back since.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.25}>
               <p className="text-lg text-muted-foreground font-light leading-[1.8]">
-                My approach is rooted in precision. Whether crafting a complex SwiftUI interface or architecting a user flow in Figma, I believe the smallest details make the biggest impact. I'm eager to apply my technical skills to deliver results that matter.
+                I care about the details — the tap that feels satisfying, the layout that just makes sense, the flow you never have to think about. Whether I'm in Figma or writing SwiftUI, I'm always asking: does this actually feel good? I want to bring that mindset into a team that cares about the same things.
               </p>
             </FadeIn>
 
