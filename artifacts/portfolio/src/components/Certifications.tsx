@@ -11,10 +11,11 @@ import achievementCert from "@/assets/cert-achievement-naadek.jpeg";
 const professional = [
   {
     name: "Preparing Data for Analysis with Microsoft Excel",
-    issuer: "Coursera",
+    issuer: "Microsoft · Coursera",
     date: "Apr 2026",
     color: "from-blue-50 to-indigo-50",
     image: null as string | null,
+    verifyUrl: "https://coursera.org/verify/TG5ASXVAPYQZ",
   },
   {
     name: "Flutter Application Developer Certification",
@@ -22,13 +23,15 @@ const professional = [
     date: "Aug 2025",
     color: "from-cyan-50 to-teal-50",
     image: tuwaiqCert as string | null,
+    verifyUrl: null as string | null,
   },
   {
     name: "AI Foundation Program",
-    issuer: "Thakaa, KSU",
+    issuer: "Thakaa Center · KSU",
     date: "Aug 2025",
     color: "from-violet-50 to-purple-50",
     image: null as string | null,
+    verifyUrl: "/certs/ksu-ai-foundation.pdf",
   },
   {
     name: "AI Fundamentals with Capstone Project",
@@ -36,6 +39,7 @@ const professional = [
     date: "Jul 2025",
     color: "from-blue-50 to-sky-50",
     image: ibmCert as string | null,
+    verifyUrl: null as string | null,
   },
 ];
 
@@ -77,47 +81,57 @@ export function Certifications() {
     delay,
     icon: Icon,
   }: {
-    item: { name: string; issuer: string; date: string; color: string; image: string | null; detail?: string };
+    item: { name: string; issuer: string; date: string; color: string; image: string | null; verifyUrl?: string | null; detail?: string };
     pool: Array<{ image: string | null }>;
     poolIndex: number;
     delay: number;
     icon: typeof ShieldCheck;
-  }) => (
-    <FadeIn delay={delay}>
-      <div
-        onClick={() => item.image && openPool(pool, poolIndex)}
-        className={`group relative flex flex-col justify-between h-full p-6 rounded-2xl bg-gradient-to-br ${item.color} border border-border/60 transition-all duration-300 ${
-          item.image
-            ? "cursor-pointer hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
-            : "cursor-default"
-        }`}
-      >
-        <div>
-          <div className="flex items-start justify-between gap-3 mb-5">
-            <div className="w-9 h-9 rounded-xl bg-white/80 border border-border/50 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-              <Icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
+  }) => {
+    const isClickable = !!(item.image || item.verifyUrl);
+    const handleClick = () => {
+      if (item.verifyUrl) {
+        window.open(item.verifyUrl, "_blank", "noopener,noreferrer");
+      } else if (item.image) {
+        openPool(pool, poolIndex);
+      }
+    };
+    return (
+      <FadeIn delay={delay}>
+        <div
+          onClick={handleClick}
+          className={`group relative flex flex-col justify-between h-full p-6 rounded-2xl bg-gradient-to-br ${item.color} border border-border/60 transition-all duration-300 ${
+            isClickable
+              ? "cursor-pointer hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
+              : "cursor-default"
+          }`}
+        >
+          <div>
+            <div className="flex items-start justify-between gap-3 mb-5">
+              <div className="w-9 h-9 rounded-xl bg-white/80 border border-border/50 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+                <Icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono text-muted-foreground">{item.date}</span>
+                {isClickable && (
+                  <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
+                    <ExternalLink className="w-2.5 h-2.5 text-primary" />
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-muted-foreground">{item.date}</span>
-              {item.image && (
-                <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                  <ExternalLink className="w-2.5 h-2.5 text-primary" />
-                </div>
-              )}
-            </div>
+            <h3 className="text-sm font-semibold text-foreground leading-snug mb-2">{item.name}</h3>
+            {"detail" in item && item.detail && (
+              <p className="text-xs text-muted-foreground font-light leading-relaxed mt-1 mb-2">{item.detail}</p>
+            )}
           </div>
-          <h3 className="text-sm font-semibold text-foreground leading-snug mb-2">{item.name}</h3>
-          {"detail" in item && item.detail && (
-            <p className="text-xs text-muted-foreground font-light leading-relaxed mt-1 mb-2">{item.detail}</p>
-          )}
+          <div className="flex items-center justify-between pt-4 border-t border-border/50">
+            <span className="text-xs text-muted-foreground">Issued by</span>
+            <span className="text-xs font-semibold text-foreground">{item.issuer}</span>
+          </div>
         </div>
-        <div className="flex items-center justify-between pt-4 border-t border-border/50">
-          <span className="text-xs text-muted-foreground">Issued by</span>
-          <span className="text-xs font-semibold text-foreground">{item.issuer}</span>
-        </div>
-      </div>
-    </FadeIn>
-  );
+      </FadeIn>
+    );
+  };
 
   return (
     <section id="certifications" className="py-32 px-6 md:px-12 lg:px-24 bg-secondary/40">

@@ -16,7 +16,7 @@ const projects = [
     title: "Jasmine",
     type: "Graduation Project",
     date: "Dec 2025",
-    role: "iOS Developer · ML Engineer",
+    role: "iOS Developer",
     description: "An AI-powered iOS app for skin condition assessment. Snap a photo, get personalized skincare recommendations — where healthcare meets everyday tech.",
     highlight: "Only team from our batch selected to present at ICAN 2026.",
     technologies: ["SwiftUI", "Core ML", "Vision", "iOS"],

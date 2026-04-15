@@ -123,8 +123,8 @@ export function Hero() {
             className="text-lg text-muted-foreground font-light max-w-xl leading-relaxed mb-16"
             data-testid="hero-summary"
           >
-            Bridging beautiful interfaces with intelligent technology.
-            Building AI-powered mobile experiences, one pixel at a time.
+            I design and build digital products — mobile apps, interfaces,
+            and data-driven solutions — with care for every detail.
           </motion.p>
 
           {/* Stats row */}
