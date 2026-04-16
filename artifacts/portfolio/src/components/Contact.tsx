@@ -12,14 +12,14 @@ const links = [
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "@LamisAlharbi",
-    href: "https://linkedin.com",
+    value: "lamis-alharbi",
+    href: "https://www.linkedin.com/in/lamis-alharbi-a666a229b",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "GitHub Profile",
-    href: "https://github.com",
+    value: "userLamees",
+    href: "https://github.com/userLamees",
   },
   {
     icon: MapPin,
