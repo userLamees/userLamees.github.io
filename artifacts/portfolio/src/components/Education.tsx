@@ -8,7 +8,6 @@ const items = [
     institution: "Imam Mohammad Ibn Saud Islamic University",
     period: "2022 – 2026",
     badge: "In Progress",
-    detail: "Graduation Project: Jasmine — AI-powered iOS app for skin condition assessment using image recognition and personalized care recommendations.",
   },
   {
     icon: Apple,
@@ -16,7 +15,6 @@ const items = [
     institution: "Apple Developer Academy",
     period: "Aug 2025 – Present",
     badge: "Current",
-    detail: "Intensive, challenge-based curriculum covering iOS development, human interface design, Swift, and professional product development.",
   },
 ];
 
@@ -61,7 +59,6 @@ export function Education() {
                         <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">{item.badge}</span>
                       </div>
                     </div>
-                    <p className="text-sm text-muted-foreground font-light leading-relaxed mt-3">{item.detail}</p>
                   </div>
                 </div>
               </FadeIn>
