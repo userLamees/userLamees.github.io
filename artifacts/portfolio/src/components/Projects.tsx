@@ -87,7 +87,7 @@ const projects = [
     title: "HireMind",
     type: "Team Project",
     date: "Jul – Aug 2026",
-    role: "Full-Stack Developer",
+    role: "Project Manager & AI Engineering",
     description: "An AI-powered mock interview platform for software engineering candidates — answer real interview questions and get instant AI feedback: a score out of 100, strengths, and areas to improve, checked against verified reference answers.",
     highlight: null,
     technologies: ["Vue 3", "Flask", "Open-Source LLMs"],
@@ -127,7 +127,7 @@ export function Projects() {
           <FadeIn>
             <div className="flex items-center gap-4 mb-6">
               <span className="section-line" />
-              <span className="text-xs font-mono text-primary tabular-nums">02</span>
+              <span className="text-xs font-mono text-primary-text tabular-nums">02</span>
             <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Selected Works</span>
             </div>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-foreground">
@@ -169,7 +169,7 @@ export function Projects() {
                             </div>
                             <div>
                               <div className="flex flex-wrap items-center gap-2">
-                                <span className="text-xs font-mono tracking-wider uppercase text-primary font-medium">{project.type}</span>
+                                <span className="text-xs font-mono tracking-wider uppercase text-primary-text font-medium">{project.type}</span>
                                 <span className="w-1 h-1 rounded-full bg-border" />
                                 <span className="text-xs font-mono text-muted-foreground">{project.date}</span>
                               </div>
@@ -181,9 +181,10 @@ export function Projects() {
                               href={project.appStoreUrl || project.liveUrl!}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex-shrink-0 w-9 h-9 rounded-full bg-secondary border border-border/60 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all duration-300 shadow-sm"
+                              className="flex-shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-foreground text-background text-xs font-semibold hover:bg-primary transition-colors duration-300 shadow-sm whitespace-nowrap"
                             >
-                              <ArrowUpRight className="w-4 h-4" />
+                              {project.appStoreUrl ? "App Store" : "View Live"}
+                              <ArrowUpRight className="w-3.5 h-3.5" />
                             </a>
                           ) : (
                             <div className="flex-shrink-0 w-9 h-9 rounded-full bg-secondary border border-border/60 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground transition-all duration-300 shadow-sm">
@@ -204,7 +205,7 @@ export function Projects() {
                         {project.highlight && (
                           <div className="flex items-start gap-2 px-3 py-2 rounded-xl bg-primary/8 border border-primary/15">
                             <Trophy className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" strokeWidth={1.5} />
-                            <p className="text-xs text-primary font-medium leading-relaxed">{project.highlight}</p>
+                            <p className="text-xs text-primary-text font-medium leading-relaxed">{project.highlight}</p>
                           </div>
                         )}
 
@@ -252,7 +253,7 @@ export function Projects() {
 
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-wrap items-center gap-3 mb-3">
-                            <span className="text-xs font-mono tracking-wider uppercase text-primary font-medium">{project.type}</span>
+                            <span className="text-xs font-mono tracking-wider uppercase text-primary-text font-medium">{project.type}</span>
                             <span className="w-1 h-1 rounded-full bg-border" />
                             <span className="text-xs font-mono text-muted-foreground">{project.date}</span>
                             <span className="w-1 h-1 rounded-full bg-border" />
@@ -267,7 +268,7 @@ export function Projects() {
                           {project.highlight && (
                             <div className="flex items-start gap-2 mb-4 px-3 py-2 rounded-xl bg-primary/8 border border-primary/15">
                               <Trophy className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" strokeWidth={1.5} />
-                              <p className="text-xs text-primary font-medium leading-relaxed">{project.highlight}</p>
+                              <p className="text-xs text-primary-text font-medium leading-relaxed">{project.highlight}</p>
                             </div>
                           )}
                           <div className="flex flex-wrap gap-2">

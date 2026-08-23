@@ -13,8 +13,8 @@ const items = [
     icon: Apple,
     degree: "First Year Program",
     institution: "Apple Developer Academy",
-    period: "Aug 2025 – Present",
-    badge: "Current",
+    period: "Aug 2025 – 2026",
+    badge: "Completed",
   },
 ];
 
@@ -26,7 +26,7 @@ export function Education() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
             <span className="section-line" />
-            <span className="text-xs font-mono text-primary tabular-nums">04</span>
+            <span className="text-xs font-mono text-primary-text tabular-nums">04</span>
             <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Education</span>
           </div>
         </FadeIn>
@@ -53,11 +53,11 @@ export function Education() {
                     <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
                       <div>
                         <h3 className="text-lg font-semibold text-foreground leading-tight">{item.degree}</h3>
-                        <p className="text-primary font-medium text-sm mt-0.5">{item.institution}</p>
+                        <p className="text-primary-text font-medium text-sm mt-0.5">{item.institution}</p>
                       </div>
                       <div className="flex flex-col items-end gap-1 text-right">
                         <span className="text-xs font-mono text-muted-foreground whitespace-nowrap">{item.period}</span>
-                        <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">{item.badge}</span>
+                        <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary-text text-xs font-medium">{item.badge}</span>
                       </div>
                     </div>
                   </div>

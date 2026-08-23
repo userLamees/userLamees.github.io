@@ -9,7 +9,7 @@ export function About() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
             <span className="section-line" />
-            <span className="text-xs font-mono text-primary tabular-nums">01</span>
+            <span className="text-xs font-mono text-primary-text tabular-nums">01</span>
             <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">About</span>
           </div>
         </FadeIn>

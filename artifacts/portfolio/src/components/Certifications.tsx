@@ -47,16 +47,16 @@ const awards = [
   {
     name: "Certificate of Appreciation — Student Participation",
     issuer: "IMAMU, IS Department",
-    date: "2025",
-    detail: "Recognised for participation and interaction in designing the IS Student Council.",
+    date: "2024",
+    detail: "Recognized for enhancing the department's visual identity — designing the Annual Report and supporting the IS Student Council through graphic design work.",
     color: "from-amber-50 to-orange-50",
     image: participationCert as string | null,
   },
   {
     name: "Certificate of Appreciation — Student Achievement",
     issuer: "IMAMU, IS Department",
-    date: "2025",
-    detail: "1st place at the University Solutions Hackathon (Naadek project).",
+    date: "Apr 2025",
+    detail: "1st place at the University Solutions Hackathon for designing and prototyping \"Naadek\" — a student engagement platform for club discovery and task management.",
     color: "from-yellow-50 to-amber-50",
     image: achievementCert as string | null,
   },
@@ -142,7 +142,7 @@ export function Certifications() {
           <FadeIn>
             <div className="flex items-center gap-4 mb-6">
               <span className="section-line" />
-              <span className="text-xs font-mono text-primary tabular-nums">07</span>
+              <span className="text-xs font-mono text-primary-text tabular-nums">06</span>
             <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Certifications</span>
             </div>
           </FadeIn>

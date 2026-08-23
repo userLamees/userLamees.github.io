@@ -32,7 +32,7 @@ export function Experience() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
             <span className="section-line" />
-            <span className="text-xs font-mono text-primary tabular-nums">06</span>
+            <span className="text-xs font-mono text-primary-text tabular-nums">05</span>
             <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Experience & Volunteering</span>
           </div>
         </FadeIn>
@@ -59,10 +59,10 @@ export function Experience() {
                       <div>
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-xs font-mono tracking-wider text-muted-foreground uppercase">{exp.type}</span>
-                          <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">{exp.badge}</span>
+                          <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary-text text-xs font-medium">{exp.badge}</span>
                         </div>
                         <h3 className="text-lg font-semibold text-foreground">{exp.role}</h3>
-                        <p className="text-primary text-sm font-medium">{exp.organization}</p>
+                        <p className="text-primary-text text-sm font-medium">{exp.organization}</p>
                       </div>
                       <span className="text-xs font-mono text-muted-foreground whitespace-nowrap">{exp.period}</span>
                     </div>

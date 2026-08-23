@@ -23,6 +23,7 @@
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-primary-border: var(--primary-border);
+  --color-primary-text: hsl(var(--primary-text));
 
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
@@ -76,6 +77,8 @@
   /* Single confident accent */
   --primary: 160 84% 33%;
   --primary-foreground: 0 0% 100%;
+  /* Darker variant for small text on light backgrounds — keeps WCAG AA (4.5:1) contrast */
+  --primary-text: 160 84% 27%;
 
   --secondary: 220 16% 96%;
   --secondary-foreground: 224 14% 20%;

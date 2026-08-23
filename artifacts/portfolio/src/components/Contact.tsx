@@ -48,7 +48,7 @@ export function Contact() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
             <span className="w-8 h-px bg-primary inline-block" />
-            <span className="text-xs font-mono text-primary tabular-nums">08</span>
+            <span className="text-xs font-mono text-primary tabular-nums">07</span>
             <span className="text-xs font-mono tracking-widest uppercase text-background/50">Contact</span>
           </div>
         </FadeIn>

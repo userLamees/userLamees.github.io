@@ -5,7 +5,7 @@ import { useRef, useState, useEffect, MouseEvent as ReactMouseEvent, ReactNode }
 const stats = [
   { to: 260, suffix: "+", label: "volunteer hrs" },
   { to: 4,   suffix: "",  label: "certifications" },
-  { to: 3,   suffix: "",  label: "projects" },
+  { to: 5,   suffix: "",  label: "projects" },
   { text: "1st",          label: "hackathon place" },
 ];
 

@@ -4,7 +4,6 @@ import { Marquee } from "@/components/Marquee";
 import { About } from "@/components/About";
 import { Education } from "@/components/Education";
 import { Projects } from "@/components/Projects";
-import { Achievements } from "@/components/Achievements";
 import { Experience } from "@/components/Experience";
 import { Skills } from "@/components/Skills";
 import { Certifications } from "@/components/Certifications";
@@ -23,7 +22,6 @@ export default function Home() {
         <Projects />
         <Skills />
         <Education />
-        <Achievements />
         <Experience />
         <Certifications />
         <Contact />
