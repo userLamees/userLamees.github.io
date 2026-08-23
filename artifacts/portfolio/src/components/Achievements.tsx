@@ -26,6 +26,7 @@ export function Achievements() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
             <span className="section-line" />
+            <span className="text-xs font-mono text-primary tabular-nums">05</span>
             <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Achievements</span>
           </div>
         </FadeIn>
@@ -41,15 +42,11 @@ export function Achievements() {
           <div className="lg:col-span-8 space-y-5">
             {achievements.map((item, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <div className={`group relative overflow-hidden flex gap-5 p-8 rounded-3xl border transition-all duration-400 ${
+                <div className={`group relative flex gap-5 p-8 rounded-xl border transition-all duration-400 ${
                   item.highlight
                     ? "bg-primary/5 border-primary/20 hover:border-primary/40 hover:shadow-md"
                     : "bg-card border-border hover:border-primary/20 hover:shadow-sm"
                 }`}>
-                  {item.highlight && (
-                    <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-primary/5 -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                  )}
-
                   <div className={`flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center ${
                     item.highlight ? "bg-primary/15 text-primary" : "bg-secondary text-muted-foreground"
                   }`}>

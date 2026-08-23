@@ -9,6 +9,9 @@ import icanPhoto1 from "@assets/ca908562-f427-4d37-ab7f-abd98895e4ae_17757841221
 import icanPhoto2 from "@assets/FullSizeRender_1775784122191.jpeg";
 import naadekWin from "@assets/1753316461820_1775784843373.jpeg";
 import haikLogo from "@/assets/haik-logo.png";
+import crazy8Logo from "@/assets/crazy8-logo.png";
+import hiremindLogo from "@/assets/hiremind-logo.png";
+import hiremindScreenshot from "@/assets/hiremind-screenshot.jpg";
 
 const projects = [
   {
@@ -26,6 +29,7 @@ const projects = [
     photos: [jasminePoster, icanPhoto1, icanPhoto2],
     photoLabels: ["Project Poster", "ICAN 2026", "Jasmine Demo"],
     appStoreUrl: null as string | null,
+    liveUrl: null as string | null,
   },
   {
     index: "02",
@@ -42,6 +46,7 @@ const projects = [
     photos: [naadekWin],
     photoLabels: ["1st Place — University Solutions Hackathon"],
     appStoreUrl: null as string | null,
+    liveUrl: null as string | null,
   },
   {
     index: "03",
@@ -58,6 +63,41 @@ const projects = [
     photos: [],
     photoLabels: [],
     appStoreUrl: "https://apps.apple.com/sa/app/haik-%D8%AD%D9%8A-%D9%83/id6759011646",
+    liveUrl: null as string | null,
+  },
+  {
+    index: "04",
+    title: "Crazy 8: Design Sprint",
+    type: "Live on Mac App Store",
+    date: "Jul 2026",
+    role: "macOS Developer",
+    description: "A native Mac app that brings the Crazy 8 design-sprint method to your desktop — sketch 8 ideas in 8 minutes, solo or with your team, then vote together on the strongest concept. Built with a small team of designers and developers.",
+    highlight: null,
+    technologies: ["SwiftUI", "Firebase", "macOS"],
+    accent: "from-orange-50 to-amber-50",
+    icon: null,
+    logo: crazy8Logo,
+    photos: [],
+    photoLabels: [],
+    appStoreUrl: "https://apps.apple.com/sa/app/crazy-8-design-sprint/id6777997307?mt=12",
+    liveUrl: null as string | null,
+  },
+  {
+    index: "05",
+    title: "HireMind",
+    type: "Team Project",
+    date: "Jul – Aug 2026",
+    role: "Full-Stack Developer",
+    description: "An AI-powered mock interview platform for software engineering candidates — answer real interview questions and get instant AI feedback: a score out of 100, strengths, and areas to improve, checked against verified reference answers.",
+    highlight: null,
+    technologies: ["Vue 3", "Flask", "Open-Source LLMs"],
+    accent: "from-teal-50 to-cyan-50",
+    icon: null,
+    logo: hiremindLogo,
+    photos: [hiremindScreenshot],
+    photoLabels: ["HireMind — Interview Setup"],
+    appStoreUrl: null as string | null,
+    liveUrl: "https://hiremind-web-6yxz.onrender.com" as string | null,
   },
 ];
 
@@ -87,7 +127,8 @@ export function Projects() {
           <FadeIn>
             <div className="flex items-center gap-4 mb-6">
               <span className="section-line" />
-              <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Selected Works</span>
+              <span className="text-xs font-mono text-primary tabular-nums">02</span>
+            <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Selected Works</span>
             </div>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-foreground">
               What I've<br />
@@ -110,14 +151,9 @@ export function Projects() {
             return (
               <FadeIn key={project.index} delay={i * 0.1}>
                 <div
-                  className={`group relative rounded-3xl border border-border bg-gradient-to-br ${project.accent} hover:border-primary/30 hover:shadow-lg transition-all duration-500 overflow-hidden`}
+                  className="group relative rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-md transition-all duration-500 overflow-hidden"
                   data-testid={`project-card-${project.title.toLowerCase().replace(/\s.*/, "")}`}
                 >
-                  {/* Ghost index */}
-                  <div className="absolute top-6 right-6 font-mono text-6xl font-bold text-foreground/[0.04] select-none leading-none z-0 pointer-events-none">
-                    {project.index}
-                  </div>
-
                   {/* ── Split layout for single-photo cards ── */}
                   {hasSinglePhoto ? (
                     <div className="flex flex-col md:flex-row">
@@ -125,7 +161,7 @@ export function Projects() {
                       <div className="flex-1 p-8 md:p-10 flex flex-col gap-5 relative z-10">
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex items-center gap-4">
-                            <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/80 border border-border/60 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
+                            <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-secondary border border-border/60 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
                               {project.logo
                                 ? <img src={project.logo} alt={project.title} className="w-8 h-8 object-contain" />
                                 : project.icon && <project.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
@@ -140,17 +176,17 @@ export function Projects() {
                               <p className="text-xs font-mono text-muted-foreground/70 mt-0.5">{project.role}</p>
                             </div>
                           </div>
-                          {project.appStoreUrl ? (
+                          {(project.appStoreUrl || project.liveUrl) ? (
                             <a
-                              href={project.appStoreUrl}
+                              href={project.appStoreUrl || project.liveUrl!}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex-shrink-0 w-9 h-9 rounded-full bg-white/80 border border-border/60 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all duration-300 shadow-sm"
+                              className="flex-shrink-0 w-9 h-9 rounded-full bg-secondary border border-border/60 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all duration-300 shadow-sm"
                             >
                               <ArrowUpRight className="w-4 h-4" />
                             </a>
                           ) : (
-                            <div className="flex-shrink-0 w-9 h-9 rounded-full bg-white/80 border border-border/60 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground transition-all duration-300 shadow-sm">
+                            <div className="flex-shrink-0 w-9 h-9 rounded-full bg-secondary border border-border/60 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground transition-all duration-300 shadow-sm">
                               <ArrowUpRight className="w-4 h-4" />
                             </div>
                           )}
@@ -174,7 +210,7 @@ export function Projects() {
 
                         <div className="flex flex-wrap gap-2 mt-auto">
                           {project.technologies.map((tech) => (
-                            <span key={tech} className="px-3 py-1 rounded-full text-xs font-medium bg-white/70 border border-border/60 text-foreground/70">
+                            <span key={tech} className="px-3 py-1 rounded-full text-xs font-medium bg-secondary/80 border border-border/60 text-foreground/70">
                               {tech}
                             </span>
                           ))}
@@ -185,7 +221,7 @@ export function Projects() {
                       <motion.button
                         onClick={() => setLightbox({ projectIndex: i, photoIndex: 0 })}
                         whileHover="hover"
-                        className="relative md:w-[42%] h-56 md:h-auto flex-shrink-0 cursor-zoom-in overflow-hidden md:rounded-r-3xl"
+                        className="relative md:w-[42%] h-56 md:h-auto flex-shrink-0 cursor-zoom-in overflow-hidden md:rounded-r-xl"
                       >
                         <motion.img
                           src={project.photos[0]}
@@ -207,7 +243,7 @@ export function Projects() {
                     /* ── Standard layout (no photo, or gallery) ── */
                     <div className="p-8 md:p-10 flex flex-col gap-6 relative z-10">
                       <div className="flex flex-col md:flex-row md:items-start gap-6">
-                        <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white/80 border border-border/60 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
+                        <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-secondary border border-border/60 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
                           {project.logo
                             ? <img src={project.logo} alt={project.title} className="w-10 h-10 object-contain" />
                             : project.icon && <project.icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
@@ -236,7 +272,7 @@ export function Projects() {
                           )}
                           <div className="flex flex-wrap gap-2">
                             {project.technologies.map((tech) => (
-                              <span key={tech} className="px-3 py-1 rounded-full text-xs font-medium bg-white/70 border border-border/60 text-foreground/70">
+                              <span key={tech} className="px-3 py-1 rounded-full text-xs font-medium bg-secondary/80 border border-border/60 text-foreground/70">
                                 {tech}
                               </span>
                             ))}
@@ -244,18 +280,18 @@ export function Projects() {
                         </div>
 
                         <div className="flex-shrink-0 self-start">
-                          {project.appStoreUrl ? (
+                          {(project.appStoreUrl || project.liveUrl) ? (
                             <a
-                              href={project.appStoreUrl}
+                              href={project.appStoreUrl || project.liveUrl!}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-xs font-semibold hover:bg-primary transition-colors duration-300 shadow-sm whitespace-nowrap"
                             >
-                              App Store
+                              {project.appStoreUrl ? "App Store" : "View Live"}
                               <ArrowUpRight className="w-3.5 h-3.5" />
                             </a>
                           ) : (
-                            <div className="w-10 h-10 rounded-full bg-white/80 border border-border/60 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300 shadow-sm">
+                            <div className="w-10 h-10 rounded-full bg-secondary border border-border/60 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300 shadow-sm">
                               <ArrowUpRight className="w-4 h-4" />
                             </div>
                           )}
@@ -296,7 +332,7 @@ export function Projects() {
 
           {/* Coming soon */}
           <FadeIn delay={0.35}>
-            <div className="flex items-center justify-center min-h-[100px] p-8 rounded-3xl border border-dashed border-border/60 hover:border-primary/30 transition-colors">
+            <div className="flex items-center justify-center min-h-[100px] p-8 rounded-xl border border-dashed border-border/60 hover:border-primary/30 transition-colors">
               <div className="text-center">
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}

@@ -26,6 +26,7 @@ export function Education() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
             <span className="section-line" />
+            <span className="text-xs font-mono text-primary tabular-nums">04</span>
             <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Education</span>
           </div>
         </FadeIn>
@@ -41,7 +42,7 @@ export function Education() {
           <div className="lg:col-span-8 space-y-6">
             {items.map((item, i) => (
               <FadeIn key={i} delay={i * 0.12}>
-                <div className="group relative flex gap-6 p-8 rounded-3xl bg-card border border-border hover:border-primary/30 hover:shadow-md transition-all duration-400">
+                <div className="group relative flex gap-6 p-8 rounded-xl bg-card border border-border hover:border-primary/30 hover:shadow-md transition-all duration-400">
                   {/* Icon */}
                   <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
                     <item.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />

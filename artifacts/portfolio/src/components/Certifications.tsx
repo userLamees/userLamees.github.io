@@ -99,7 +99,7 @@ export function Certifications() {
       <FadeIn delay={delay}>
         <div
           onClick={handleClick}
-          className={`group relative flex flex-col justify-between h-full p-6 rounded-2xl bg-gradient-to-br ${item.color} border border-border/60 transition-all duration-300 ${
+          className={`group relative flex flex-col justify-between h-full p-6 rounded-xl bg-card border border-border/60 transition-all duration-300 ${
             isClickable
               ? "cursor-pointer hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
               : "cursor-default"
@@ -107,7 +107,7 @@ export function Certifications() {
         >
           <div>
             <div className="flex items-start justify-between gap-3 mb-5">
-              <div className="w-9 h-9 rounded-xl bg-white/80 border border-border/50 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+              <div className="w-9 h-9 rounded-lg bg-secondary border border-border/50 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
                 <Icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
               </div>
               <div className="flex items-center gap-2">
@@ -142,7 +142,8 @@ export function Certifications() {
           <FadeIn>
             <div className="flex items-center gap-4 mb-6">
               <span className="section-line" />
-              <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Certifications</span>
+              <span className="text-xs font-mono text-primary tabular-nums">07</span>
+            <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Certifications</span>
             </div>
           </FadeIn>
 
@@ -153,7 +154,6 @@ export function Certifications() {
                 <span className="italic text-primary">learning.</span>
               </h2>
               <p className="mt-5 text-sm text-muted-foreground font-light leading-relaxed">
-                Industry-recognised credentials from leading programmes.
                 Click any card to view the certificate.
               </p>
             </FadeIn>
@@ -191,7 +191,6 @@ export function Certifications() {
                 <span className="italic text-primary">impact.</span>
               </h2>
               <p className="mt-5 text-sm text-muted-foreground font-light leading-relaxed">
-                Recognition for meaningful contributions beyond the classroom.
                 Click any card to view the certificate.
               </p>
             </FadeIn>

@@ -31,13 +31,25 @@ const links = [
 
 export function Contact() {
   return (
-    <section id="contact" className="py-32 px-6 md:px-12 lg:px-24 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section
+      id="contact"
+      className="relative py-32 px-6 md:px-12 lg:px-24 overflow-hidden bg-foreground rounded-t-[2.5rem] md:rounded-t-[3.5rem]"
+    >
+      {/* Oversized ghost word — editorial flourish */}
+      <div
+        aria-hidden
+        className="absolute -bottom-10 left-0 right-0 text-center font-serif italic text-[18vw] leading-none text-background/[0.04] select-none pointer-events-none whitespace-nowrap"
+      >
+        Say hello
+      </div>
+
+      <div className="relative max-w-6xl mx-auto">
 
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
-            <span className="section-line" />
-            <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Contact</span>
+            <span className="w-8 h-px bg-primary inline-block" />
+            <span className="text-xs font-mono text-primary tabular-nums">08</span>
+            <span className="text-xs font-mono tracking-widest uppercase text-background/50">Contact</span>
           </div>
         </FadeIn>
 
@@ -46,14 +58,14 @@ export function Contact() {
           {/* Left */}
           <div className="lg:col-span-6">
             <FadeIn>
-              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-foreground mb-8">
+              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-background mb-8">
                 Let's build something<br />
                 <span className="italic text-primary">meaningful.</span>
               </h2>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-lg text-muted-foreground font-light leading-relaxed mb-12 max-w-md">
-                Open to internship opportunities, collaborations, and conversations about design, technology, and everything in between.
+              <p className="text-lg text-background/60 font-light leading-relaxed mb-12 max-w-md">
+                Open to internships and collaborations — let's talk.
               </p>
             </FadeIn>
             <FadeIn delay={0.2}>
@@ -61,7 +73,7 @@ export function Contact() {
                 href="mailto:Lamees1harbi@gmail.com"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background text-sm font-semibold hover:bg-primary transition-colors duration-300 shadow-lg"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors duration-300 shadow-lg"
                 data-testid="contact-email-btn"
               >
                 Say Hello
@@ -81,28 +93,28 @@ export function Contact() {
                         href={link.href}
                         target={link.href.startsWith("mailto") ? undefined : "_blank"}
                         rel="noopener noreferrer"
-                        className="group flex items-center justify-between p-5 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-sm transition-all duration-300"
+                        className="group flex items-center justify-between p-5 rounded-2xl bg-background/5 border border-background/10 hover:border-primary/40 hover:bg-background/[0.07] transition-all duration-300"
                         data-testid={`contact-link-${link.label.toLowerCase()}`}
                       >
                         <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                            <link.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" strokeWidth={1.5} />
+                          <div className="w-10 h-10 rounded-xl bg-background/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                            <link.icon className="w-4 h-4 text-background/70 group-hover:text-primary transition-colors" strokeWidth={1.5} />
                           </div>
                           <div>
-                            <p className="text-xs font-mono text-muted-foreground mb-0.5">{link.label}</p>
-                            <p className="text-sm font-medium text-foreground">{link.value}</p>
+                            <p className="text-xs font-mono text-background/40 mb-0.5">{link.label}</p>
+                            <p className="text-sm font-medium text-background">{link.value}</p>
                           </div>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all duration-300" />
+                        <ArrowRight className="w-4 h-4 text-background/40 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300" />
                       </a>
                     ) : (
-                      <div className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border">
-                        <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
-                          <link.icon className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
+                      <div className="flex items-center gap-4 p-5 rounded-2xl bg-background/5 border border-background/10">
+                        <div className="w-10 h-10 rounded-xl bg-background/10 flex items-center justify-center">
+                          <link.icon className="w-4 h-4 text-background/70" strokeWidth={1.5} />
                         </div>
                         <div>
-                          <p className="text-xs font-mono text-muted-foreground mb-0.5">{link.label}</p>
-                          <p className="text-sm font-medium text-foreground">{link.value}</p>
+                          <p className="text-xs font-mono text-background/40 mb-0.5">{link.label}</p>
+                          <p className="text-sm font-medium text-background">{link.value}</p>
                         </div>
                       </div>
                     )}

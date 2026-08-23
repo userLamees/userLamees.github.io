@@ -9,6 +9,7 @@ export function About() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
             <span className="section-line" />
+            <span className="text-xs font-mono text-primary tabular-nums">01</span>
             <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">About</span>
           </div>
         </FadeIn>
@@ -28,13 +29,7 @@ export function About() {
           <div className="lg:col-span-7 space-y-8">
             <FadeIn delay={0.15}>
               <p className="text-xl text-muted-foreground font-light leading-[1.8]">
-                I'm a Computer Information Systems student with a focus on two areas I'm equally passionate about: UI/UX design and iOS development on one side, and data analysis on the other. I enjoy both building products people use and making sense of data to drive better decisions.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.25}>
-              <p className="text-lg text-muted-foreground font-light leading-[1.8]">
-                Whether I'm designing interfaces in Figma, building mobile apps with SwiftUI, or analyzing datasets to uncover insights — I bring the same mindset to all of it: curiosity, attention to detail, and a commitment to doing the work well. Outside of tech, volunteering is a meaningful part of who I am — giving back to my community has shaped how I think about building things that genuinely serve people.
+                CIS student building at the intersection of UI/UX, iOS development, and data analysis — with curiosity, attention to detail, and 260+ hours giving back through volunteering.
               </p>
             </FadeIn>
 

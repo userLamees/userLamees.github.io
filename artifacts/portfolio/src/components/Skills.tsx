@@ -1,28 +1,51 @@
 import { FadeIn } from "./FadeIn";
 import { motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
 import {
-  Smartphone, PenTool, BarChart3, Workflow, BrainCircuit,
-  MessageSquare, Lightbulb, Users, ListTodo, Code2
+  PenTool, BarChart3, Workflow, BrainCircuit, Smartphone, Layers,
+  MessageSquare, Lightbulb, Users, ListTodo,
 } from "lucide-react";
 
-const technicalSkills = [
-  { name: "SwiftUI", icon: Smartphone, level: 90 },
-  { name: "UI/UX Design", icon: PenTool, level: 88 },
-  { name: "Figma & Sketch", icon: PenTool, level: 85 },
-  { name: "Flutter", icon: Code2, level: 75 },
-  { name: "Power BI", icon: BarChart3, level: 80 },
-  { name: "System Analysis", icon: Workflow, level: 82 },
-  { name: "AI/ML Fundamentals", icon: BrainCircuit, level: 70 },
+import figmaLogo from "@/assets/logos/figma.svg";
+import sketchLogo from "@/assets/logos/sketch.svg";
+import xcodeLogo from "@/assets/logos/xcode.svg";
+import swiftLogo from "@/assets/logos/swift.svg";
+import flutterLogo from "@/assets/logos/flutter.svg";
+import gitLogo from "@/assets/logos/git.svg";
+import canvaLogo from "@/assets/logos/canva.svg";
+
+type SkillItem = { name: string; icon?: LucideIcon; logo?: string };
+
+function LogoIcon({ src, alt }: { src: string; alt: string }) {
+  return <img src={src} alt={alt} className="w-4 h-4 object-contain" />;
+}
+
+const technicalSkills: SkillItem[] = [
+  { name: "iOS Development", icon: Smartphone },
+  { name: "UI/UX Design", icon: PenTool },
+  { name: "Cross-Platform Development", icon: Layers },
+  { name: "Data Analysis", icon: BarChart3 },
+  { name: "System Analysis", icon: Workflow },
+  { name: "AI/ML Fundamentals", icon: BrainCircuit },
 ];
 
-const softSkills = [
+const softSkills: SkillItem[] = [
   { name: "Effective Communication", icon: MessageSquare },
   { name: "Problem Solving", icon: Lightbulb },
   { name: "Teamwork", icon: Users },
   { name: "Multitasking", icon: ListTodo },
 ];
 
-const tools = ["Figma", "Sketch", "Xcode", "Swift", "SwiftUI", "Flutter", "Power BI", "Canva", "Git"];
+const tools: SkillItem[] = [
+  { name: "Figma", logo: figmaLogo },
+  { name: "Sketch", logo: sketchLogo },
+  { name: "Xcode", logo: xcodeLogo },
+  { name: "Swift", logo: swiftLogo },
+  { name: "Flutter", logo: flutterLogo },
+  { name: "Power BI", icon: BarChart3 },
+  { name: "Canva", logo: canvaLogo },
+  { name: "Git", logo: gitLogo },
+];
 
 export function Skills() {
   return (
@@ -32,6 +55,7 @@ export function Skills() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
             <span className="section-line" />
+            <span className="text-xs font-mono text-primary tabular-nums">03</span>
             <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Capabilities</span>
           </div>
         </FadeIn>
@@ -44,30 +68,29 @@ export function Skills() {
         </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-20">
-          {/* Technical with progress bars */}
+          {/* Technical skills */}
           <FadeIn delay={0.1}>
             <div>
               <h3 className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-8 pb-4 border-b border-border">Technical Skills</h3>
-              <div className="space-y-5">
+              <div className="grid grid-cols-2 gap-3">
                 {technicalSkills.map((skill, i) => (
-                  <div key={skill.name}>
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-2.5">
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.05 * i, duration: 0.4 }}
+                    className="flex items-center gap-3 p-4 rounded-2xl bg-secondary/50 border border-border/60 hover:bg-secondary hover:border-border transition-colors"
+                  >
+                    <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      {skill.logo ? (
+                        <LogoIcon src={skill.logo} alt={skill.name} />
+                      ) : skill.icon ? (
                         <skill.icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
-                        <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                      </div>
-                      <span className="text-xs font-mono text-muted-foreground">{skill.level}%</span>
+                      ) : null}
                     </div>
-                    <div className="h-1 bg-secondary rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full bg-primary rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.1 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-                      />
-                    </div>
-                  </div>
+                    <span className="text-sm font-medium text-foreground leading-tight">{skill.name}</span>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -84,32 +107,49 @@ export function Skills() {
                     className="flex items-start gap-3 p-4 rounded-2xl bg-secondary/50 border border-border/60 hover:bg-secondary hover:border-border transition-colors"
                   >
                     <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <skill.icon className="w-3.5 h-3.5 text-primary" strokeWidth={2} />
+                      {skill.icon ? <skill.icon className="w-3.5 h-3.5 text-primary" strokeWidth={2} /> : null}
                     </div>
                     <span className="text-sm font-medium text-foreground leading-tight">{skill.name}</span>
                   </div>
                 ))}
               </div>
 
-              <h3 className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-6 pb-4 border-b border-border">Tools & Technologies</h3>
-              <div className="flex flex-wrap gap-2">
-                {tools.map((tool, i) => (
-                  <motion.span
-                    key={tool}
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.05 * i, duration: 0.3 }}
-                    className="px-3.5 py-1.5 rounded-full text-xs font-medium bg-card border border-border text-foreground/80 hover:border-primary/40 hover:text-foreground transition-colors"
-                  >
-                    {tool}
-                  </motion.span>
-                ))}
-              </div>
             </div>
           </FadeIn>
         </div>
+
+        {/* Tools & Technologies — scrolling logo strip */}
+        <FadeIn delay={0.2}>
+          <h3 className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-6 pb-4 border-b border-border">Tools & Technologies</h3>
+        </FadeIn>
       </div>
+
+      <FadeIn delay={0.25}>
+        <div
+          className="relative overflow-hidden py-2"
+          style={{ maskImage: "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)" }}
+        >
+          <motion.div
+            className="flex items-center gap-4 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, duration: 22, ease: "linear" }}
+          >
+            {[...tools, ...tools].map((tool, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-secondary/50 border border-border/60 flex-shrink-0"
+              >
+                {tool.logo ? (
+                  <LogoIcon src={tool.logo} alt={tool.name} />
+                ) : tool.icon ? (
+                  <tool.icon className="w-4 h-4 text-foreground/70" />
+                ) : null}
+                <span className="text-sm font-medium text-foreground/80 whitespace-nowrap">{tool.name}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </FadeIn>
     </section>
   );
 }

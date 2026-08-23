@@ -32,6 +32,7 @@ export function Experience() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-16">
             <span className="section-line" />
+            <span className="text-xs font-mono text-primary tabular-nums">06</span>
             <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">Experience & Volunteering</span>
           </div>
         </FadeIn>
@@ -47,7 +48,7 @@ export function Experience() {
           <div className="lg:col-span-8 space-y-5">
             {experiences.map((exp, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <div className="group flex gap-6 p-8 rounded-3xl bg-card border border-border hover:border-primary/20 hover:shadow-sm transition-all duration-400">
+                <div className="group flex gap-6 p-8 rounded-xl bg-card border border-border hover:border-primary/20 hover:shadow-sm transition-all duration-400">
 
                   <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
                     <exp.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
